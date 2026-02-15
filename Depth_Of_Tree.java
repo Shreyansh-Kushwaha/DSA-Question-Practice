@@ -40,17 +40,24 @@ public class Depth_Of_Tree
         System.out.println("Before The Inversion");
 		prettyPrint(bochu.root, "", false);
 		
-		invertTree(bochu.root);
+		int result = depthOfTree(bochu.root);
 		
-		System.out.println("After the Inverison");
-		prettyPrint(bochu.root, "", false);
+		System.out.println( "The Depth of this tree is " + result );
+		
+		
 	}
     
     
-    public static Node depthOfTree(Node root) {
+    public static int depthOfTree(Node root) {
             
-            Stack<Integer> stuck = new Stack<>();
+            if ( root == null ) {
+                return 0;
+            }
             
+            int left = depthOfTree(root.left);
+            int right =  depthOfTree(root.right);
+            
+            return Math.max( left, right ) + 1;
     }
     
 	
@@ -67,8 +74,3 @@ public class Depth_Of_Tree
     }
 
 }
-
-
-
-
-
